@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Hover Transition</title>
+<style media="screen">
+body {
+	text-align: center;
+}
+
+@keyframes pulsing-heart {
+	0% { transform: none; }
+	50% { transform: scale(1.4); }
+	100% { transform: none; }
+}
+.heart {
+	font-size: 10rem;
+	color: #FF0000;
+}
+
+.heart:hover {
+	animation:pulsing-heart .5s infinite;
+	transform-origin:center;
+}
+
+a{
+	font-family: Helvetica, Arial, sans-serif;
+	text-decoration: none;
+	color:#ffffff;
+}
+.button{
+	padding: 0.75rem 1rem;
+	border-radius: 0.3rem;
+	box-shadow: 0;
+	background-color: #bbbbbb;
+}
+.button:hover{
+	background-color: #ee2222;
+	box-shadow: 0 4px #990000;
+	transition: 0.5s;
+}
+.sidebar{
+	background-color:#eee;
+	box-shadow: 1px 0 3px #888888;
+	position:absolute;
+	width: 15rem;
+	height: 100%;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0;
+}
+li{
+	padding: 15px;
+	border-bottom: solid 1px #eee;
+	background-color: #ddd;
+}
+.sidebar{
+	background-color:#eee;
+	box-shadow: 1px 0 3px #888888;
+	position:absolute;
+	width: 15rem;
+	height: 100%;
+}
+.sidebar-transition{
+	opacity: 0;
+	left: -15rem;
+}
+
+.sidebar-transition-active{
+	opacity: 1;
+	left: 0;
+	transition: 0.5s;
+}
+
+input {
+	padding: 5px;
+	width: 120px;
+	margin-top:10px;
+}
+
+.item {
+	background-color: #efefef;
+	cursor: pointer;
+	display: block;
+	margin-bottom: 1px;
+	padding: 8px 12px;
+	width: 120px;
+}
+
+.example-enter {
+	opacity: 0;
+	transform: translateX(-250px);
+}
+.example-enter.example-enter-active {
+	opacity: 1;
+	transform: translateX(0);
+	transition: 0.3s;
+}
+
+.example-leave {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.example-appear {
+	opacity: 0;
+	transform: translateX(-250px);
+}
+.example-appear.example-appear-active {
+	opacity: 1;
+	transform: translateX(0);
+	transition: .5s;
+}
+</style>
+</head>
+<body>
+	<button onclick="
+document.querySelector('.sidebar').classList.add('sidebar-transition-active');
+"> &#9776; </button>
+<!-- &#9776; is the HTML Entity for the ☰ utf-8 symbol (aka "Hamburger Menu") -->
+	<div class='sidebar sidebar-transition'>
+	<ul>
+	...
+	</ul>
+	</div>
+	<div id='root'>
+    </div>
+    <script src="bundle.js"></script>
+</body>
+</html>
